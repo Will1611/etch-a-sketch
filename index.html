@@ -8,15 +8,60 @@
   </head>
   <body>
     <header>
-      <h1>Etch-a-Sketch</h1>
+      <h1 class="heading-main">
+        Etch-a-Sketch
+        <!-- <span>E</span>
+        <span>t</span>
+        <span>c</span>
+        <span>h</span>
+        <span>-</span>
+        <span>a</span>
+        <span>-</span>
+        <span>S</span>
+        <span>k</span>
+        <span>e</span>
+        <span>t</span>
+        <span>c</span>
+        <span>h</span> -->
+      </h1>
     </header>
 
     <main>
       <div class="container">
-        <div class="hidden"></div>
+        <p class="display-grid">16 X 16</p>
         <div class="sketch"></div>
         <div class="menu">
-          <button class="btn-reset">Reset</button>
+          <div class="menu-row-1">
+            <div>
+              <label for="input">Enter a grid size:</label>
+              <input
+                class="input"
+                type="number"
+                name="input"
+                id="input"
+                value="16"
+              />
+            </div>
+            <div>
+              <button class="btn-grid">Generate grid</button>
+              <button class="btn-reset">Reset grid</button>
+            </div>
+          </div>
+          <div class="menu-row-2">
+            <div>
+              <label for="color">Choose a colour:</label>
+              <input type="color" id="color" />
+            </div>
+
+            <div>
+              <input type="radio" id="eraser" name="radio" />
+
+              <label for="eraser">Eraser</label>
+              <input type="radio" id="rainbow" name="radio" />
+
+              <label for="rainbow">Rainbow</label>
+            </div>
+          </div>
         </div>
       </div>
     </main>
