@@ -9,8 +9,7 @@
   <body>
     <header>
       <h1 class="heading-main">
-        Etch-a-Sketch
-        <!-- <span>E</span>
+        <span>E</span>
         <span>t</span>
         <span>c</span>
         <span>h</span>
@@ -22,7 +21,7 @@
         <span>e</span>
         <span>t</span>
         <span>c</span>
-        <span>h</span> -->
+        <span>h</span>
       </h1>
     </header>
 
@@ -50,16 +49,24 @@
           <div class="menu-row-2">
             <div>
               <label for="color">Choose a colour:</label>
-              <input type="color" id="color" />
+              <input type="color" id="color" class="input-color" />
             </div>
 
-            <div>
-              <input type="radio" id="eraser" name="radio" />
-
-              <label for="eraser">Eraser</label>
-              <input type="radio" id="rainbow" name="radio" />
-
-              <label for="rainbow">Rainbow</label>
+            <div class="radios">
+              <input
+                type="radio"
+                id="eraser"
+                name="radio"
+                class="radio-eraser"
+              />
+              <label for="eraser" class="label-eraser">Eraser</label>
+              <input
+                type="radio"
+                id="rainbow"
+                name="radio"
+                class="radio-rainbow"
+              />
+              <label for="rainbow" class="label-rainbow">Rainbow</label>
             </div>
           </div>
         </div>
