@@ -15,6 +15,7 @@ const headingMain = document.querySelector(`.heading-main`);
 
 const radioEraser = document.querySelector(`.radio-eraser`);
 const radioRainbow = document.querySelector(`.radio-rainbow`);
+const radioCaterpillar = document.querySelector(`.radio-caterpillar`);
 
 const hexValues = [
   `0`,
@@ -72,6 +73,7 @@ function removeGrid() {
 function resetRadios() {
   radioEraser.checked = false;
   radioRainbow.checked = false;
+  radioCaterpillar.checked = false;
 }
 
 function useGrid() {
@@ -91,6 +93,25 @@ function useGrid() {
       radioRainbow.addEventListener(`click`, () => {
         square.addEventListener(`mouseenter`, () => {
           square.style.backgroundColor = randomColor();
+        });
+      });
+      radioCaterpillar.addEventListener(`click`, () => {
+        square.addEventListener(`mouseenter`, () => {
+          square.style.backgroundColor = `pink`;
+          let opacity = `1`;
+          let numOpacity = Number(opacity);
+          numOpacity -= 0.1;
+          console.log(numOpacity);
+
+          square.addEventListener(`mouseleave`, () => {
+            // for (let i = 10; i <= 0; i--) {
+            //   let opacityNum = Number(opacity);
+            //   --opacityNum;
+            //   opacity = opacityNum.toString();
+            //   square.style.opacity = opacity;
+            //   console.log(opacity);
+            // }
+          });
         });
       });
     }
@@ -138,7 +159,7 @@ btnReset.addEventListener(`click`, () => {
   generateGrid(gridSize);
 });
 
-inputColor.addEventListener(`click`, (event) => {
+inputColor.addEventListener(`click`, () => {
   resetRadios();
 
   rows = Array.from(sketch.children);
