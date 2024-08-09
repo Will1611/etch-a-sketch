@@ -4,6 +4,9 @@
 const sketch = document.querySelector(`.sketch`);
 let rows;
 
+const btn = Array.from(document.querySelectorAll(`.btn`));
+console.log(btn);
+
 const btnGrid = document.querySelector(`.btn-grid`);
 const btnReset = document.querySelector(`.btn-reset`);
 
@@ -52,6 +55,8 @@ function newColors() {
   for (let letter of letters) {
     letter.style.color = randomColor();
   }
+  btnGrid.style.borderColor = randomColor();
+  btnReset.style.borderColor = btnGrid.style.borderColor;
   sketch.style.borderColor = randomColor();
 }
 
