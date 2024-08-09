@@ -43,7 +43,10 @@ let gridSize;
 function init() {
   gridSize = 16;
   document.body.style.backgroundColor = randomColor();
-  randomColorH1();
+  const letters = Array.from(headingMain.children);
+  for (let letter of letters) {
+    letter.style.color = randomColor();
+  }
   generateGrid(gridSize);
 }
 
@@ -53,17 +56,8 @@ function randomColor() {
     const num = Math.floor(Math.random() * 15);
     arr[i] = hexValues[num];
   }
-  // Convert array to string without commas
   const color = arr.join(``);
   return color;
-}
-
-function randomColorH1() {
-  const letters = Array.from(headingMain.children);
-
-  for (let letter of letters) {
-    letter.style.color = randomColor();
-  }
 }
 
 function removeGrid() {
@@ -77,45 +71,80 @@ function resetRadios() {
 }
 
 function useGrid() {
-  // inputColor.value = `#000000`;
+  funcInputColor();
+  funcRadioEraser();
+  funcRadioRainbow();
+  funcRadioCaterpillar();
+}
+
+function funcInputColor() {
   rows = Array.from(sketch.children);
   for (let row of rows) {
     const squares = Array.from(row.children);
     for (let square of squares) {
       square.addEventListener(`mouseenter`, () => {
+        square.style.opacity = 1;
+
         square.style.backgroundColor = inputColor.value;
       });
+    }
+  }
+}
+
+function funcRadioEraser() {
+  rows = Array.from(sketch.children);
+  for (let row of rows) {
+    const squares = Array.from(row.children);
+    for (let square of squares) {
       radioEraser.addEventListener(`click`, () => {
         square.addEventListener(`mouseenter`, () => {
           square.style.backgroundColor = ``;
         });
       });
+    }
+  }
+}
+
+function funcRadioRainbow() {
+  rows = Array.from(sketch.children);
+  for (let row of rows) {
+    const squares = Array.from(row.children);
+    for (let square of squares) {
       radioRainbow.addEventListener(`click`, () => {
         square.addEventListener(`mouseenter`, () => {
-          square.style.backgroundColor = randomColor();
-        });
-      });
-      radioCaterpillar.addEventListener(`click`, () => {
-        square.addEventListener(`mouseenter`, () => {
-          square.style.backgroundColor = `pink`;
-          let opacity = `1`;
-          let numOpacity = Number(opacity);
-          numOpacity -= 0.1;
-          console.log(numOpacity);
+          square.style.opacity = 1;
 
-          square.addEventListener(`mouseleave`, () => {
-            // for (let i = 10; i <= 0; i--) {
-            //   let opacityNum = Number(opacity);
-            //   --opacityNum;
-            //   opacity = opacityNum.toString();
-            //   square.style.opacity = opacity;
-            //   console.log(opacity);
-            // }
-          });
+          square.style.backgroundColor = randomColor();
         });
       });
     }
   }
+}
+
+function funcRadioCaterpillar() {
+  radioCaterpillar.addEventListener(`click`, () => {
+    let opacity = 1;
+
+    rows = Array.from(sketch.children);
+    for (let row of rows) {
+      const squares = Array.from(row.children);
+      for (let square of squares) {
+        square.addEventListener(`mouseenter`, () => {
+          if (opacity >= 0.1) {
+            square.style.backgroundColor = inputColor.value;
+
+            opacity -= 0.1;
+            opacity = opacity.toFixed(1);
+            square.style.opacity = opacity;
+            console.log(opacity);
+          }
+        });
+        square.addEventListener(`mouseleave`, () => {
+          if (opacity === `0.0`) opacity = 1;
+        });
+      }
+    }
+  });
 }
 
 function generateGrid(gridSize) {
@@ -152,8 +181,10 @@ btnReset.addEventListener(`click`, () => {
     const squares = row.children;
     for (let square of squares) {
       square.style.backgroundColor = `#fff`;
+      square.style.opacity = 1;
     }
   }
+
   resetRadios();
   removeGrid();
   generateGrid(gridSize);
@@ -168,6 +199,7 @@ inputColor.addEventListener(`click`, () => {
     for (let square of squares) {
       square.addEventListener(`mouseenter`, () => {
         square.style.backgroundColor = inputColor.value;
+        square.style.opacity = 1;
       });
     }
   }
