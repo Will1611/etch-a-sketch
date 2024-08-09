@@ -42,12 +42,17 @@ let gridSize;
 
 function init() {
   gridSize = 16;
+  newColors();
+  generateGrid(gridSize);
+}
+
+function newColors() {
   document.body.style.backgroundColor = randomColor();
   const letters = Array.from(headingMain.children);
   for (let letter of letters) {
     letter.style.color = randomColor();
   }
-  generateGrid(gridSize);
+  sketch.style.borderColor = randomColor();
 }
 
 function randomColor() {
@@ -155,13 +160,14 @@ function generateGrid(gridSize) {
     row.style.height = `${600 / gridSize}px`;
     row.style.display = `flex`;
     sketch.appendChild(row);
-    for (let j = 1; j <= gridSize; j++) {
+    for (let j = 1; j <= gridSize * 2; j++) {
       const square = document.createElement(`div`);
       square.style.height = `${600 / gridSize}px`;
       square.style.width = `${600 / gridSize}px`;
       row.appendChild(square);
     }
   }
+  newColors();
   useGrid();
 }
 

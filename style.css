@@ -34,13 +34,14 @@ main {
 
 .sketch {
   height: 600px;
-  width: 600px;
+  width: 1200px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  border: 1px solid yellowgreen;
+  border: 3px solid;
   margin-bottom: 50px;
   border-radius: 5px;
+  box-sizing: content-box;
 }
 
 .menu {
