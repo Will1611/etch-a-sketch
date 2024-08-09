@@ -82,10 +82,22 @@ p {
 }
 
 button {
+  border: none;
+  padding: 8px;
+}
+
+button,
+input {
+  border-radius: 5px;
+  text-align: center;
+}
+
+button,
+input,
+label {
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
-  padding: 5px;
 }
 
 .radio-rainbow {
